@@ -17,13 +17,7 @@ class PatientSerializer(serializers.ModelSerializer):
             'city',
             'state',
             'zip_code',
-            'country'
-            'age',
+            'country',
+            'age', 
             'address'
         ]
-    
-    def get_age(self, obj):
-        return obj.get_age()
-
-    def get_address(self, obj):
-        return obj.get_address() 
