@@ -1,0 +1,20 @@
+[tool.poetry]
+name = "medicarecord"
+version = "0.1.0"
+description = ""
+authors = ["Narjiss Youyou <Narjiss.Youyou@student.uantwerpen.be>"]
+readme = "README.md"
+package-mode = false
+
+[tool.poetry.dependencies]
+python = "^3.12"
+django = "^5.1.1"
+djangorestframework = "^3.15.2"
+psycopg2 = "^2.9.9"
+django-environ = "^0.11.2"
+environs = "^11.0.0"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
