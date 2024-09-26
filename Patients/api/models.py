@@ -12,9 +12,10 @@ class Patient(models.Model):
     email = models.EmailField(max_length=255)
     street = models.CharField(max_length=255)
     city = models.CharField(max_length=100)
-    state = models.CharField(max_length=2)
+    state = models.CharField(max_length=2, null=True)
     zip_code = models.CharField(max_length=10)
     country = models.CharField(max_length=10)
+    date_creation = models.DateTimeField(auto_now_add=True)
     
     def get_age(self):
         age = datetime.date.today() - self.date_of_birth
@@ -26,3 +27,6 @@ class Patient(models.Model):
     
     def __str__(self):
         return f"{self.first_name} {self.last_name}"
+    
+    age = property(get_age)
+    address = property(get_address)
