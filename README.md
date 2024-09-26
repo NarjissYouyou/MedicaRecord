@@ -36,3 +36,21 @@ poetry add package_name
 . Field Names: Use lowercase (e.g., patient_name, appointment_date).
 
 
+# Docker 
+
+
+```bash
+sudo docker compose build 
+sudo docker compose up -d
+sudo docker compose down 
+sudo docker system prune -a 
+sudo docker compose down -v
+```
+
+# Migrations via docker 
+
+
+```bash
+sudo docker compose exec service_name python manage.py makemigrations
+sudo docker compose exec service_name python manage.py migrate
+```
