@@ -11,21 +11,50 @@ services:
         - "*"
       args:
         DJANGO_ENV: development
-    command: ["./wait-for-it.sh", "db:5432", "--", "python", "-Wd", "manage.py", "runserver", "0.0.0.0:8000"]
+    command: ["./wait-for-it.sh", "db_patients:5432", "--", "python", "-Wd", "manage.py", "runserver", "0.0.0.0:8000"]
     ports:
       - 8000:8000
     env_file:
       - ./Patients/.env.dev
     depends_on:
-      - db
+      - db_patients
   
-  db:
+  db_patients:
     image: postgres
     restart: unless-stopped
     volumes:
-      - postgres_data:/var/lib/postgresql/data/
+      - postgres_data_patients:/var/lib/postgresql/data/
     env_file:
       - ./Patients/.env.dev
+  Doctors:
+    image: "medicarecord:dev"
+    build:
+      target: development_build
+      context: ./Doctors
+      dockerfile: Dockerfile
+      cache_from:
+        - "medicarecord:dev"
+        - "medicarecord:latest"
+        - "*"
+      args:
+        DJANGO_ENV: development
+    command: ["./wait-for-it.sh", "db_doctors:5432", "--", "python", "-Wd", "manage.py", "runserver", "0.0.0.0:8001"]
+    ports:
+      - 8001:8000
+    env_file:
+      - ./Doctors/.env.dev
+    depends_on:
+      - db_doctors
+
+  db_doctors:
+    image: postgres
+    restart: unless-stopped
+    volumes:
+      - postgres_data_doctors:/var/lib/postgresql/data/
+    env_file:
+      - ./Doctors/.env.dev
+
 
 volumes:
-  postgres_data:
+  postgres_data_patients:
+  postgres_data_doctors:
