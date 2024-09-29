@@ -66,39 +66,39 @@ Below are some common Docker commands used in the development workflow:
 
 - **Build Docker containers**:
 
-    ```bash
+```bash
     sudo docker compose build
-    ```
+```
 
 - **Start Docker containers in detached mode**:
 
-    ```bash
+```bash
     sudo docker compose up -d
-    ```
+```
 
 - **Stop and remove containers**:
 
-    ```bash
+```bash
     sudo docker compose down
-    ```
+```
 
 - **Prune unused Docker resources**:
 
-    ```bash
+```bash
     sudo docker system prune -a
-    ```
+```
 
 - **Stop running containers**:
 
-    ```bash
+```bash
     sudo docker stop $(sudo docker ps -q)
-    ```
+```
 
 - **Remove stopped containers**:
 
-    ```bash
+```bash
     sudo docker container prune
-    ```
+```
 
 ---
 
@@ -108,15 +108,15 @@ To manage database migrations from within Docker containers:
 
 - **Make migrations**:
 
-    ```bash
+```bash
     sudo docker compose exec <service_name> python manage.py makemigrations
-    ```
+```
 
 - **Apply migrations**:
 
-    ```bash
+```bash
     sudo docker compose exec <service_name> python manage.py migrate
-    ```
+```
 
 ---
 
