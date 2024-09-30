@@ -1,5 +1,5 @@
 services:
-  Patients:
+  patients:
     image: "medicarecord:dev"
     build:
       target: development_build
@@ -26,7 +26,7 @@ services:
       - postgres_data_patients:/var/lib/postgresql/data/
     env_file:
       - ./Patients/.env.dev
-  Doctors:
+  doctors:
     image: "medicarecord:dev"
     build:
       target: development_build
