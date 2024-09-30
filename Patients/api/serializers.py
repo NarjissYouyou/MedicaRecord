@@ -19,6 +19,5 @@ class PatientSerializer(serializers.ModelSerializer):
             'zip_code',
             'country',
             'age', 
-            'address',
-            'date_creation'
+            'address'
         ]
