@@ -1,5 +1,7 @@
 from django.db import models
 import datetime
+from django.utils import timezone
+
 
 # Create your models here.
 class Patient(models.Model):  
@@ -15,7 +17,6 @@ class Patient(models.Model):
     state = models.CharField(max_length=2, null=True)
     zip_code = models.CharField(max_length=10)
     country = models.CharField(max_length=10)
-    date_creation = models.DateTimeField(auto_now_add=True)
     
     def get_age(self):
         age = datetime.date.today() - self.date_of_birth
